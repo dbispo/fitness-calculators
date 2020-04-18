@@ -120,21 +120,27 @@ class ConnectedPace extends Component {
 
         return (
             <Row className="mb-3">
-                <Col md="2" className="my-auto text-right">Pace:</Col>
                 <Col>
-                    <Form.Control type="number" value={getHour()} onChange={changeHour} placeholder="Hours" />
-                </Col>
-                <Col>
-                    <Form.Control type="number" value={getMin()} onChange={changeMin} placeholder="Minutes" />
-                </Col>
-                <Col>
-                    <Form.Control type="number" value={getSec()} onChange={changeSec} placeholder="Seconds" />
-                </Col>
-                <Col md="auto">
-                    <Form.Control as="select" onChange={changeUnit}>
-                        <option value="km">by km</option>
-                        <option value="mi">by mi</option>
-                    </Form.Control>
+                    <Row>
+                        <Col>Pace:</Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Form.Control type="number" value={getHour()} onChange={changeHour} placeholder="Hours" />
+                        </Col>
+                        <Col>
+                            <Form.Control type="number" value={getMin()} onChange={changeMin} placeholder="Minutes" />
+                        </Col>
+                        <Col>
+                            <Form.Control type="number" value={getSec()} onChange={changeSec} placeholder="Seconds" />
+                        </Col>
+                        <Col md="auto">
+                            <Form.Control as="select" onChange={changeUnit}>
+                                <option value="km">by km</option>
+                                <option value="mi">by mi</option>
+                            </Form.Control>
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
         )

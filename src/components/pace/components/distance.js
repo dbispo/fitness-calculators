@@ -9,7 +9,7 @@ class ConnectedDistance extends Component {
         this.state = {
             unit: 'km',
             distance: props.distance,
-            inputDistance : undefined
+            inputDistance: undefined
         }
     }
     render() {
@@ -63,15 +63,21 @@ class ConnectedDistance extends Component {
 
         return (
             <Row className="mb-3">
-                <Col md="2" className="my-auto text-right">Distance:</Col>
                 <Col>
-                    <Form.Control value={getInputDistance()} onChange={changeDistanceEvent} placeholder="Distance" />
-                </Col>
-                <Col xs="auto">
-                    <Form.Control as="select" value={this.state.unit} onChange={changeUnit}>
-                        <option>km</option>
-                        <option>mi</option>
-                    </Form.Control>
+                    <Row>
+                        <Col>Distance:</Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Form.Control value={getInputDistance()} onChange={changeDistanceEvent} placeholder="Distance" />
+                        </Col>
+                        <Col xs="auto">
+                            <Form.Control as="select" value={this.state.unit} onChange={changeUnit}>
+                                <option>km</option>
+                                <option>mi</option>
+                            </Form.Control>
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
         )
