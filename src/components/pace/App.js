@@ -1,15 +1,12 @@
-import React from 'react';
-import './App.css';
-import store from './store/store';
-import { changeTime } from './actions/actions';
-import { Provider } from 'react-redux';
-import PaceForm from './components/form';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
 import { Container, Row } from 'react-bootstrap';
+import { Provider } from 'react-redux';
+import './App.css';
+import PaceForm from './components/form';
+import store from './store/store';
 
 
-window.store = store;
-window.changeTime = changeTime;
 
 function App() {
   return (
