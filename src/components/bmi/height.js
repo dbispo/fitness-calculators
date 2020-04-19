@@ -1,7 +1,56 @@
 import React, { Component } from 'react'
 import { Col, Form, Row } from 'react-bootstrap';
+import { changeHeight } from './actions';
+import { connect } from 'react-redux';
 
-class Height extends Component {
+class ConnectedHeight extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            unit : 'm',
+            height : ''
+        }
+
+        this.changeUnit = this.changeUnit.bind(this)
+        this.changeHeightEvent = this.changeHeightEvent.bind(this)
+        this.getHeight = this.getHeight.bind(this)
+    }
+
+    changeUnit(event) {
+        const newUnit = event.target.value;
+        this.changeHeight(this.state.height, newUnit)
+    }
+
+    changeHeightEvent(event) {
+        const newHeight = event.target.value;
+        this.changeHeight(newHeight, this.state.unit)
+    }
+
+    changeHeight(stateHeight, unit) {
+        let storeHeight = stateHeight
+
+        if(storeHeight && unit === 'ft') {
+            storeHeight = storeHeight / 3.2808
+        }
+
+        this.props.changeHeight(storeHeight)
+
+        this.setState({
+            ...this.state,
+            unit : unit,
+            height : stateHeight
+        })
+    }
+
+    getHeight() {
+        let height = this.props.height;
+        if(height && this.state.unit === 'ft') {
+            height = height * 3.2808
+        }
+
+        return height
+    }
+
     render() {
         return (
             <>
@@ -10,11 +59,11 @@ class Height extends Component {
                 </Row>
                 <Row>
                     <Col>
-                        <Form.Control type="number" /></Col>
+                        <Form.Control type="number" onChange={this.changeHeightEvent} value={this.getHeight()} /></Col>
                     <Col md="auto">
-                        <Form.Control as="select">
-                            <option>meters</option>
-                            <option>feet</option>
+                        <Form.Control as="select" value={this.state.unit} onChange={this.changeUnit}>
+                            <option value='m'>meters</option>
+                            <option value='ft'>feet</option>
                         </Form.Control>
                     </Col>
                 </Row>
@@ -22,5 +71,13 @@ class Height extends Component {
         )
     }
 }
+
+const mapDispatchToProps = dispatch => {
+    return {
+        changeHeight : (newHeight) => dispatch(changeHeight(newHeight)) 
+    }
+}
+
+const Height = connect(null, mapDispatchToProps)(ConnectedHeight)
 
 export default Height;
