@@ -16,7 +16,7 @@ const ConnectedButtons = ({calcBMI, clearForm, calcEnabled}) => {
     return (
         <>
             <Button onClick={calcBMI} disabled={!calcEnabled}>Calculate</Button>
-            <Button onClick={clearForm}>Clear</Button>
+            <Button onClick={clearForm} variant="secondary">Clear</Button>
         </>
     )
 

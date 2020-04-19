@@ -12,7 +12,7 @@ function App() {
   return (
     <Provider store={store}>
       <Container className="vh-100">
-        <Row className="justify-content-center mb-3" >
+        <Row className="mb-3" >
           <h1>Pace Calculator</h1>
         </Row>
         <Row>
