@@ -35,6 +35,10 @@ export function rootReducer(state = initialState, action) {
         }
     }
 
+    if(action.type === ACTION_TYPES.CLEAR_ALL) {
+        state = initialState
+    }
+
     return state;
 
 }

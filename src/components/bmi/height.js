@@ -78,6 +78,12 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-const Height = connect(null, mapDispatchToProps)(ConnectedHeight)
+const mapStateToProps = state => {
+    return {
+        height : state.height
+    }
+}
+
+const Height = connect(mapStateToProps, mapDispatchToProps)(ConnectedHeight)
 
 export default Height;
