@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Col, Form, Row } from 'react-bootstrap';
 import { changeWeight } from './actions';
 import { connect } from 'react-redux';
+import { injectIntl } from 'gatsby-plugin-intl';
 
 class ConnectedWeight extends Component {
     constructor(props) {
@@ -10,7 +11,7 @@ class ConnectedWeight extends Component {
             unit : 'kg',
             weight : ''
         }
-
+        this.intl = props.intl
         this.changeUnit = this.changeUnit.bind(this)
         this.changeWeight =this.changeWeight.bind(this)
         this.getWeight = this.getWeight.bind(this)
@@ -61,14 +62,14 @@ class ConnectedWeight extends Component {
         return (
             <>
                 <Row>
-                    <Col>Weight:</Col>
+                    <Col>{this.intl.formatMessage({id : 'weight'})}:</Col>
                 </Row>
                 <Row>
                     <Col><Form.Control type="number" onChange={this.changeWeightEvent} value={this.getWeight()} /></Col>
                     <Col md="auto">
                         <Form.Control as="select" value={this.state.unit} onChange={this.changeUnit}>
                             <option value='kg'>kg</option>
-                            <option value='lbs'>pounds</option>
+                            <option value='lbs'>lbs</option>
                         </Form.Control>
                     </Col>
                 </Row>
@@ -89,7 +90,7 @@ const mapStateToProps = state => {
     }
 }
 
-const Weight = connect(mapStateToProps, mapDispatchToProps)(ConnectedWeight)
+const Weight = connect(mapStateToProps, mapDispatchToProps)(injectIntl(ConnectedWeight))
 
 
 export default Weight;

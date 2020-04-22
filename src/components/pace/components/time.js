@@ -1,75 +1,75 @@
-import React, { Component } from "react";
+import React from "react";
 import { Col, Form, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import { changeTime } from "../actions/actions";
+import { useIntl } from "gatsby-plugin-intl";
 
-class ConnectedTime extends Component {
+const ConnectedTime = ({hour, min, sec, time, changeTime}) => {
 
-    render() {
-        const changeHour = event => {
-            let newHour = event.target.value;
-            if (!newHour) newHour = 0
-            else newHour = parseInt(newHour)
-            if (this.props.time) {
-                const delta = (newHour - this.props.hour) * 3600
-                const newTime = this.props.time + delta
-                this.props.changeTime(newTime)
-            }
-            else {
-                this.props.changeTime(newHour * 3600)
-            }
+    const intl = useIntl()
+    const changeHour = event => {
+        let newHour = event.target.value;
+        if (!newHour) newHour = 0
+        else newHour = parseInt(newHour)
+        if (time) {
+            const delta = (newHour - hour) * 3600
+            const newTime = time + delta
+            changeTime(newTime)
         }
-
-        const changeMin = event => {
-            let newMin = event.target.value;
-            if (!newMin) newMin = 0
-            else newMin = parseInt(newMin)
-            if (this.props.time) {
-                const delta = (newMin - this.props.min) * 60
-                const newTime = this.props.time + delta
-                this.props.changeTime(newTime)
-            }
-            else {
-                this.props.changeTime(newMin * 60)
-            }
+        else {
+            changeTime(newHour * 3600)
         }
-
-        const changeSec = event => {
-            let newSec = event.target.value;
-            if (!newSec) newSec = 0
-            else newSec = parseInt(newSec)
-            if (this.props.time) {
-                const delta = newSec - this.props.sec
-                const newTime = this.props.time + delta
-                this.props.changeTime(newTime)
-            }
-            else {
-                this.props.changeTime(newSec)
-            }
-        }
-
-        return (
-            <Row className="mb-3">
-                <Col>
-                    <Row>
-                        <Col>Time:</Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <Form.Control type="number" value={this.props.hour} onChange={changeHour} placeholder="Hours" />
-                        </Col>
-
-                        <Col>
-                            <Form.Control type="number" value={this.props.min} onChange={changeMin} placeholder="Minutes" />
-                        </Col>
-                        <Col>
-                            <Form.Control type="number" value={this.props.sec} onChange={changeSec} placeholder="Seconds" />
-                        </Col>
-                    </Row>
-                </Col>
-            </Row>
-        )
     }
+
+    const changeMin = event => {
+        let newMin = event.target.value;
+        if (!newMin) newMin = 0
+        else newMin = parseInt(newMin)
+        if (time) {
+            const delta = (newMin - min) * 60
+            const newTime = time + delta
+            changeTime(newTime)
+        }
+        else {
+            changeTime(newMin * 60)
+        }
+    }
+
+    const changeSec = event => {
+        let newSec = event.target.value;
+        if (!newSec) newSec = 0
+        else newSec = parseInt(newSec)
+        if (time) {
+            const delta = newSec - sec
+            const newTime = time + delta
+            changeTime(newTime)
+        }
+        else {
+            changeTime(newSec)
+        }
+    }
+
+    return (
+        <Row className="mb-3">
+            <Col>
+                <Row>
+                    <Col>{intl.formatMessage({id: "time"})}:</Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Form.Control type="number" value={hour} onChange={changeHour} placeholder={intl.formatMessage({id: "hours"})} />
+                    </Col>
+
+                    <Col>
+                        <Form.Control type="number" value={min} onChange={changeMin} placeholder={intl.formatMessage({id: "minutes"})} />
+                    </Col>
+                    <Col>
+                        <Form.Control type="number" value={sec} onChange={changeSec} placeholder={intl.formatMessage({id: "seconds"})} />
+                    </Col>
+                </Row>
+            </Col>
+        </Row>
+    )
 }
 
 const mapTimeStateToProps = state => {

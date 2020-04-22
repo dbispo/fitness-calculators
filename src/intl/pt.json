@@ -1,0 +1,17 @@
+{
+    "siteTitle" : "Calculadoras Fitness",
+    "bodyMassIndex": "Índice de Massa Corporal",
+    "paceCalculator": "Calculadora de Ritmo",
+    "weight" : "Peso",
+    "height" : "Altura",
+    "calculate" : "Calcular",
+    "clear" : "Limpar",
+    "yourBMI": "O seu IMC é",
+    "time": "Tempo",
+    "hours": "Horas",
+    "minutes": "Minutos",
+    "seconds": "Segundos",
+    "distance": "Distância",
+    "pace" : "Ritmo",
+    "by" : "por"
+}

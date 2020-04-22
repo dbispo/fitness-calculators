@@ -5,10 +5,15 @@ import Pace from './pace';
 import { Row, Button, Col, Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { changePace, changeTime, changeDistance, clearForm } from '../actions/actions';
+import { injectIntl } from 'gatsby-plugin-intl';
 
 
 class ConnectedButtons extends Component {
 
+    constructor(props) {
+        super(props)
+        this.intl = props.intl
+    }
     render() {
         const calc = () => {
             let willCalc = 'none';
@@ -39,8 +44,8 @@ class ConnectedButtons extends Component {
         return (
             <Row className="justify-content-center">
                 <Col xs="auto">
-                    <Button onClick={calc} disabled={!isCalcEnabled()}>Calculate</Button>
-                    <Button variant="secondary" onClick={this.props.clearForm}>Clear</Button>
+        <Button onClick={calc} disabled={!isCalcEnabled()}>{this.intl.formatMessage({id : 'calculate'})}</Button>
+                    <Button variant="secondary" onClick={this.props.clearForm}>{this.intl.formatMessage({id : 'clear'})}</Button>
                 </Col>
             </Row>
         )
@@ -64,7 +69,7 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-const Buttons = connect(mapStateToProps, mapDispatchToProps)(ConnectedButtons)
+const Buttons = connect(mapStateToProps, mapDispatchToProps)(injectIntl(ConnectedButtons))
 
 const PaceForm = () => (
     <Container>

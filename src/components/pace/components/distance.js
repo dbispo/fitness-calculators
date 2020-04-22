@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Row, Col, Form } from "react-bootstrap";
 import { connect } from "react-redux";
 import { changeDistance } from "../actions/actions";
+import { injectIntl } from "gatsby-plugin-intl";
 
 class ConnectedDistance extends Component {
     constructor(props) {
@@ -11,6 +12,7 @@ class ConnectedDistance extends Component {
             distance: props.distance,
             inputDistance: undefined
         }
+        this.intl = props.intl
     }
     render() {
 
@@ -65,11 +67,11 @@ class ConnectedDistance extends Component {
             <Row className="mb-3">
                 <Col>
                     <Row>
-                        <Col>Distance:</Col>
+                        <Col>{this.intl.formatMessage({id : 'distance'})}:</Col>
                     </Row>
                     <Row>
                         <Col>
-                            <Form.Control value={getInputDistance()} onChange={changeDistanceEvent} placeholder="Distance" />
+                            <Form.Control value={getInputDistance()} onChange={changeDistanceEvent} placeholder={this.intl.formatMessage({id : 'distance'})} />
                         </Col>
                         <Col xs="auto">
                             <Form.Control as="select" value={this.state.unit} onChange={changeUnit}>
@@ -96,6 +98,6 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-const Distance = connect(mapStateToProps, mapDispatchToProps)(ConnectedDistance)
+const Distance = connect(mapStateToProps, mapDispatchToProps)(injectIntl(ConnectedDistance))
 
 export default Distance;

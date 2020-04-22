@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Row, Col, Form } from "react-bootstrap";
 import { connect } from "react-redux";
 import { changePace } from "../actions/actions";
+import { injectIntl } from "gatsby-plugin-intl";
 
 class ConnectedPace extends Component {
 
@@ -10,6 +11,7 @@ class ConnectedPace extends Component {
         this.state = {
             unit: 'km'
         }
+        this.intl = props.intl;
     }
 
     render() {
@@ -122,22 +124,22 @@ class ConnectedPace extends Component {
             <Row className="mb-3">
                 <Col>
                     <Row>
-                        <Col>Pace:</Col>
+                        <Col>{this.intl.formatMessage({id : 'pace'})}:</Col>
                     </Row>
                     <Row>
                         <Col>
-                            <Form.Control type="number" value={getHour()} onChange={changeHour} placeholder="Hours" />
+                            <Form.Control type="number" value={getHour()} onChange={changeHour} placeholder={this.intl.formatMessage({id : 'hours'})} />
                         </Col>
                         <Col>
-                            <Form.Control type="number" value={getMin()} onChange={changeMin} placeholder="Minutes" />
+                            <Form.Control type="number" value={getMin()} onChange={changeMin} placeholder={this.intl.formatMessage({id : 'minutes'})} />
                         </Col>
                         <Col>
-                            <Form.Control type="number" value={getSec()} onChange={changeSec} placeholder="Seconds" />
+                            <Form.Control type="number" value={getSec()} onChange={changeSec} placeholder={this.intl.formatMessage({id : 'seconds'})} />
                         </Col>
                         <Col md="auto">
                             <Form.Control as="select" onChange={changeUnit}>
-                                <option value="km">by km</option>
-                                <option value="mi">by mi</option>
+                                <option value="km">{this.intl.formatMessage({id : 'by'})} km</option>
+                                <option value="mi">{this.intl.formatMessage({id : 'by'})} mi</option>
                             </Form.Control>
                         </Col>
                     </Row>
@@ -160,6 +162,6 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-const Pace = connect(mapStateToProps, mapDispatchToProps)(ConnectedPace)
+const Pace = connect(mapStateToProps, mapDispatchToProps)(injectIntl(ConnectedPace))
 
 export default Pace;

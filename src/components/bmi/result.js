@@ -2,21 +2,22 @@ import React from "react";
 import { connect } from "react-redux";
 import { Button } from "react-bootstrap";
 import { calcBMI, clearForm } from "./actions";
+import { injectIntl } from "gatsby-plugin-intl";
 
-const ConnectedResult = ({bmi}) => {
+const ConnectedResult = ({bmi, intl}) => {
     return (
         <div>
-            <p><span>Your BMI is: </span> {bmi} </p>
+            <p><span>{intl.formatMessage({id : 'yourBMI'})}: </span> {bmi} </p>
         </div>
     )
 }
 
-const ConnectedButtons = ({calcBMI, clearForm, calcEnabled}) => {
+const ConnectedButtons = ({calcBMI, clearForm, calcEnabled, intl}) => {
 
     return (
         <>
-            <Button onClick={calcBMI} disabled={!calcEnabled}>Calculate</Button>
-            <Button onClick={clearForm} variant="secondary">Clear</Button>
+            <Button onClick={calcBMI} disabled={!calcEnabled}>{intl.formatMessage({id : 'calculate'})}</Button>
+            <Button onClick={clearForm} variant="secondary">{intl.formatMessage({id : 'clear'})}</Button>
         </>
     )
 
@@ -37,5 +38,5 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export const Result = connect(mapStateToProps)(ConnectedResult)
-export const Buttons = connect(mapStateToProps, mapDispatchToProps)(ConnectedButtons)
+export const Result = connect(mapStateToProps)(injectIntl(ConnectedResult))
+export const Buttons = connect(mapStateToProps, mapDispatchToProps)(injectIntl(ConnectedButtons))

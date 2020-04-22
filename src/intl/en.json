@@ -1,0 +1,17 @@
+{
+    "siteTitle" : "Fitness Calculators",
+    "bodyMassIndex": "Body Mass Index",
+    "paceCalculator": "Pace Calculator",
+    "weight" : "Weight",
+    "height" : "Height",
+    "calculate" : "Calculate",
+    "clear" : "Clear",
+    "yourBMI": "Your BMI is",
+    "time": "Time",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds",
+    "distance": "Distance",
+    "pace" : "Pace",
+    "by" : "by"
+}
