@@ -13,5 +13,12 @@
     "seconds": "Segundos",
     "distance": "Distância",
     "pace" : "Ritmo",
-    "by" : "por"
+    "by" : "por",
+    "lead": "Calculadoras para ajuda-lo a criar e manter sua rotina fitness",
+    "bmi_lead": "Verifique de forma simples como está o seu peso em relação a sua altura",
+    "pace_lead": "Calcule ritmo, tempo e distância utilizando a calculadora de ritmo",
+    "underweight": "Abaixo do Peso",
+    "normalweight": "Peso Normal",
+    "overweight": "Acima do peso",
+    "obesity": "Obesidade"
 }

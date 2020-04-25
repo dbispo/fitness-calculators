@@ -13,5 +13,12 @@
     "seconds": "Seconds",
     "distance": "Distance",
     "pace" : "Pace",
-    "by" : "by"
+    "by" : "by",
+    "lead": "Calculators to help you create and maintain your fitness routine",
+    "bmi_lead": "Check how your weight is in relation to your height",
+    "pace_lead": "Calculate pace, time and distance with this pace calculator",
+    "underweight": "Underweight",
+    "normalweight": "Normal Weight",
+    "overweight": "Overweight",
+    "obesity": "Obesity"
 }

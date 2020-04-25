@@ -17,20 +17,9 @@ const Layout = ({ children }) => {
   return (
     <div style={{minHeight : '100vh'}}>
       <Header />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 600,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
+      <div>
         <main>{children}</main>
-      </div>
-      <footer style={{ bottom: '0', position : 'absolute', backgroundColor : 'lightgrey', height : '3em', width : '100%' }}>
-        © {new Date().getFullYear()}, Built with
-          {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
+      </div>      
     </div>
   )
 }

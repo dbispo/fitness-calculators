@@ -13,7 +13,7 @@ function App() {
   const intl = useIntl()
   return (
     <Provider store={store}>
-      <Container className="vh-100">
+      <Container>
         <Row className="mb-3" >
           <h1>{intl.formatMessage({id : 'paceCalculator'})}</h1>
         </Row>
