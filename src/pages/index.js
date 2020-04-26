@@ -7,7 +7,7 @@ import { FaWeight, FaRunning } from "react-icons/fa";
 
 const IndexPage = ({ intl }) => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title={intl.formatMessage({ id: 'siteTitle' })} lang={intl.locale} />
     <Jumbotron fluid>
       <Container>
         <h1>{intl.formatMessage({ id: 'siteTitle' })}</h1>

@@ -12,7 +12,7 @@ const IndexPage = () => {
     return (
         <Layout>
             <CalcLayout>
-                <SEO title={intl.formatMessage({ id: "bodyMassIndex" })} />
+                <SEO title={intl.formatMessage({ id: "bodyMassIndex" })} lang={intl.locale} />
                 <Container>
                     <Row className="mb-3">
                         <h1>{intl.formatMessage({ id: "bodyMassIndex" })}</h1>

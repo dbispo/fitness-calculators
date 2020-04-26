@@ -9,7 +9,7 @@ const IndexPage = () => {
   const intl = useIntl()
   return (
     <Layout>
-      <SEO title={intl.formatMessage({ id: 'paceCalculator' })} />
+      <SEO title={intl.formatMessage({ id: 'paceCalculator' })} lang={intl.locale} />
       <CalcLayout>
         <App />
       </CalcLayout>
