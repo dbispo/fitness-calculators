@@ -15,11 +15,14 @@ import "./layout.css";
 const Layout = ({ children }) => {
 
   return (
-    <div style={{minHeight : '100vh'}}>
+    <div style={{minHeight : '100vh', display: 'flex', flexDirection: 'column'}}>
       <Header />
       <div>
         <main>{children}</main>
-      </div>      
+      </div>
+      <footer style={{marginTop: 'auto', padding: '1rem', backgroundColor: 'lightgray'}}>
+        Created by <a href="https://diogobispo.dev/">Diogo Bispo</a>
+      </footer>      
     </div>
   )
 }
