@@ -5,6 +5,7 @@ Small set of calculators to help people to keep or plan their fitness routine. C
 - Body Mass Index Calculator
 - Pace Calculator
 
+Now with offline support!
 
 # Stack
 - ReactJS
