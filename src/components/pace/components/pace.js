@@ -97,7 +97,7 @@ class ConnectedPace extends Component {
             if (!newMin) newMin = 0
             else newMin = parseInt(newMin)
             if (this.props.pace) {
-                const delta = (newMin - this.props.min) * 60
+                const delta = (newMin - getMin()) * 60
                 const newPace = this.props.pace + delta
                 this.props.changePace(newPace)
             }
@@ -110,8 +110,8 @@ class ConnectedPace extends Component {
             let newSec = event.target.value;
             if (!newSec) newSec = 0
             else newSec = parseInt(newSec)
-            if (this.props.pace) {
-                const delta = newSec - this.props.sec
+            if (this.props.pace) {                
+                const delta = newSec - getSec()
                 const newPace = this.props.pace + delta
                 this.props.changePace(newPace)
             }
